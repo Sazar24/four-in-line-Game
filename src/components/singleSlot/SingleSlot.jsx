@@ -10,13 +10,11 @@ class SingleSlot extends React.Component {
 
     }
     render() {
-        // console.log("this.props.gridSlotValue: ", this.props.gridSlotValue);
         
         return (
             <div className="singleSlot"
                 onClick={() => this.handleClick()} >
                 {this.props.gridSlotValue}
-                {/* {this.props.index} */}
 
             </div>
         )

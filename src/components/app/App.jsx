@@ -5,10 +5,9 @@ import Board from '../board/Board';
 
 class App extends Component {
   render() {
-    // console.log(this.props.items);
     return (
       <div className="App">
-        
+
         <Board />
       </div>
     );
@@ -16,11 +15,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// const mapStateToProps = (store) => (
-//   {
-//       items: store.gridReducer.items,
-//   });
-
-// export default connect(mapStateToProps)(App);

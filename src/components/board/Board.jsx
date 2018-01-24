@@ -6,8 +6,6 @@ import SingleSlot from "../singleSlot/SingleSlot";
 class Board extends React.Component {
     render() {
         const columnsAmount = this.props.gameParameters.columnsAmount;
-        // const rowsAmount = this.props.gameParameters.rowsAmount;
-        // const slotsAmount = columnsAmount * rowsAmount;
 
         return (
             <div className="board">
@@ -37,9 +35,8 @@ class Board extends React.Component {
 
 const mapStateToProps = (store) => (
     {
-        gameParameters: store.gridReducer.gameParameters.gameParameters,
+        gameParameters: store.gridReducer.gameConsts.gameParameters,
         gridArray: store.gridReducer.gameModel
-        // editModeIndex: store.listReducer.editModeIndex
     });
 
 export default connect(mapStateToProps)(Board);

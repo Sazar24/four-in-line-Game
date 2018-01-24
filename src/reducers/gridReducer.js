@@ -1,10 +1,8 @@
 import { gameParameters, gridArray } from "../consts/gameParameters";
 import { determineWhichColumnIsIt, findLowestEmptySlotIDinColumn } from "../functions/gridCheck";
 
-let newGameParameters = { gameParameters }
-
 const defaultState = {
-    gameParameters: newGameParameters,
+    gameConsts: {gameParameters},
     gameModel: gridArray
 }
 
@@ -12,15 +10,14 @@ export const gridReducer = (state = defaultState, action) => {
 
     switch (action.type) {
         case "COLUMN_CLICKED":
-            console.log('id ', action.payload);
-            const columnClicked = determineWhichColumnIsIt(action.payload, state.gameParameters.gameParameters);
-            const lowestEmptySlotID = findLowestEmptySlotIDinColumn(columnClicked, state.gameParameters.gameParameters, state.gameModel);
-
+            const columnClicked = determineWhichColumnIsIt(action.payload, state.gameConsts.gameParameters);
+            const lowestEmptySlotID = findLowestEmptySlotIDinColumn(columnClicked, state.gameConsts.gameParameters, state.gameModel);
             const newGridArray = state.gameModel.slice();
-            newGridArray[lowestEmptySlotID] = 'x';
+
+            if (lowestEmptySlotID !== undefined)
+                newGridArray[lowestEmptySlotID] = 'x';
 
             return { ...state, gameModel: newGridArray };
-
 
         default:
             return state;
