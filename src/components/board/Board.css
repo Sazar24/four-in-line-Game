@@ -1,0 +1,11 @@
+.board {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #222;
+    min-width: 300px;
+    padding-bottom: 45px;
+     /* width: fit-content;  */
+    /* height: fit-content; */
+    /* width: intrinsic; */
+    
+  }
