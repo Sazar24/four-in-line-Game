@@ -1,9 +1,9 @@
 const determineWhichColumnIsIt = require("../../src/functions/gridCheck");
 
 
-test('dsf', () => {
+// test('dsf', () => {
     
 
     
-    determineWhichColumnIsIt
-}); 
+//     determineWhichColumnIsIt
+// }); 
