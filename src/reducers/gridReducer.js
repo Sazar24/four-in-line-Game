@@ -4,8 +4,8 @@ import { determineWhichColumnIsIt, findLowestEmptySlotIDinColumn } from "../func
 const defaultState = {
     gameConsts: { gameParameters },
     gameModel: gridArray,
+    players: players,
     currentPlayerNr: 0,
-    currentPlayer: players[0]
 }
 
 export const gridReducer = (state = defaultState, action) => {
@@ -25,9 +25,9 @@ export const gridReducer = (state = defaultState, action) => {
         case "CHANGE_PLAYER":
             let nextPlayerNr = state.currentPlayerNr + 1;
             if (nextPlayerNr > players.length - 1) nextPlayerNr = 0;
+            //TODO: tu jakaś blokada może, że jak kliknięcie w pełną kolumnę, to nie zmienia gracza
 
-
-            return { ...state, currentPlayerNr: nextPlayerNr, currentPlayer: players[nextPlayerNr] }
+            return { ...state, currentPlayerNr: nextPlayerNr }
 
         default:
             return state;

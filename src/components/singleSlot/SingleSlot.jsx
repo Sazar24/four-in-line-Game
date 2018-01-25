@@ -2,6 +2,8 @@ import "./SingleSlot.css";
 import React from 'react';
 
 import { columnClicked, changePlayer } from "../../actions/gridActions";
+import { connect } from 'react-redux';
+import { determinePlayerColor } from "../../functions/players";
 
 class SingleSlot extends React.Component {
     handleClick() {
@@ -12,18 +14,29 @@ class SingleSlot extends React.Component {
 
     }
     render() {
-        const playerColor=this.props.styleColor;
-        console.log("color:", playerColor);
-        
+        const symbol = this.props.gridSlotValue;
+        let bgColorStyle;
+        if (symbol != null) {
+            const color = determinePlayerColor(symbol, this.props.players)
+            bgColorStyle = {"backgroundColor": color };
+            
+        }
+        console.log("color:", bgColorStyle);
+
         return (
-            <div className="singleSlot" 
-            // style={{'backgroundColor':playerColor }}
+            <div className="singleSlot"
+                style={bgColorStyle}
                 onClick={() => this.handleClick()} >
-                {this.props.gridSlotValue}
+                {symbol}
 
             </div>
         )
     }
 }
 
-export default SingleSlot;
+const mapStateToProps = (store) => (
+    {
+        players: store.gridReducer.players,
+    }
+);
+export default connect(mapStateToProps)(SingleSlot)
