@@ -1,6 +1,6 @@
 import { gameParameters, gridArray, players } from "../consts/gameParameters";
 import { determineWhichColumnIsIt, findLowestEmptySlotIDinColumn } from "../functions/gridCheck";
-import { findWinnerLine } from "../functions/winCheck";
+import  {findWinnerLine}  from "../functions/winCheck";
 
 const defaultState = {
     gameConsts: { gameParameters },
@@ -21,8 +21,8 @@ export const gridReducer = (state = defaultState, action) => {
                 newGridArray[lowestEmptySlotID] = players[state.currentPlayerNr].symbol;
 
             if (findWinnerLine(lowestEmptySlotID, newGridArray))
-            console.log(players[state.currentPlayerNr].color, "has won!");
-            ;
+                console.log(players[state.currentPlayerNr].color, "has won!");
+            
 
             return { ...state, gameModel: newGridArray };
 

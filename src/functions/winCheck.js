@@ -1,33 +1,42 @@
+import { determineWhichColumnIsIt } from "./gridCheck";
+// const determineColumnNr = require ("./gridCheck");
+
 const winningLength = 4;
 
-export function findWinnerLine(addedSlotId, gameGrid) {   // slot wasn't Clicked! it was added at the bottom of the gameGrid
+export
+function findWinnerLine(addedSlotId, gameGrid) {   // slot wasn't Clicked! it was added at the bottom of the gameGrid
 
     const symbol = gameGrid[addedSlotId];
-    console.log('symbol we are looking for now is: ', symbol);
-    
-    //variant: HORIZONTAL line
+
+    // ## variant: HORIZONTAL line  ##
     let checkStep = 1;
     let lineBuildToBeChecked = [];
 
-    for (let i = -(winningLength - 1); i < winningLength - 1; i++) {
-        let checkSlotID = addedSlotId + checkStep * i;
-        if (gameGrid[checkSlotID] === symbol)
-            lineBuildToBeChecked.push({id: checkSlotID, value: symbol });
+    for (let i = -(winningLength - 1); i < winningLength; i++) {
+        let slotIDToCheck = addedSlotId + checkStep * i;
+        //TODO: tutaj dać sprawdzanie która to kolumna - dla checkSlotID
+        // if różnica tegoTutaj.kolumna od poprzedniogo >1 then clear Tablicę.
+
+
+
+        if (slotIDToCheck >= gameGrid.length) continue;
+        if (slotIDToCheck < 0) continue;
+        let thisColumn;
+
+        if (gameGrid[slotIDToCheck] === symbol) {
+            thisColumn = determineWhichColumnIsIt(slotIDToCheck, 7);
+            lineBuildToBeChecked.push({ id: slotIDToCheck, value: symbol, column: thisColumn });
+        }
         else {
             lineBuildToBeChecked = [];
         }
-        if (lineBuildToBeChecked.length === winningLength){
-            //TODO: test czy na pewno...;
+        if (lineBuildToBeChecked.length === winningLength) {
             //TODO: dispatch na podświetlenie (np border++, width--), żeby nie bawić się w rozróżnianie kolorków...;
 
-            console.log('the winner is found! ', symbol, lineBuildToBeChecked);
             return true;
-            
-
         }
-
-
     }
-
-
+    return false;
 }
+// module.exports = findWinnerLine;
+// export { findWinnerLine };

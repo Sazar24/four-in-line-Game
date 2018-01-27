@@ -11,10 +11,9 @@ export function findLowestEmptySlotIDinColumn(columnNr, gridParams, _gridArray) 
         let id = rowNr * gridParams.columnsAmount + columnNr;
         if (_gridArray[id] === null) {
             // console.log(`In ${columnNr}. column  lowest empty slot id is: ${id}`);
-            return id;            
+            return id;
         }
     }
-    
     console.log(`Column ${columnNr} is already filled!!`);
-
 }
+
