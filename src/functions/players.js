@@ -9,6 +9,10 @@ export function determinePlayerColor(symbol, players) {
         }
     }
 
-    if (matchAmount > 1) throw new Error('players symbols must be unique!');
+    if (matchAmount > 1)
+        throw new Error('players symbols must be unique!');
+    if (!matchAmount)
+        throw new Error(`there is no player with such symbol!`)
+
     return matchedPlayer.color;
 }

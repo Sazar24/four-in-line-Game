@@ -18,7 +18,6 @@ export const gridReducer = (state = defaultState, action) => {
 
             if (lowestEmptySlotID !== undefined)
                 newGridArray[lowestEmptySlotID] = players[state.currentPlayerNr].symbol;
-            // newGridArray[lowestEmptySlotID] = 'x';
 
             return { ...state, gameModel: newGridArray };
 
@@ -26,7 +25,7 @@ export const gridReducer = (state = defaultState, action) => {
             let nextPlayerNr = state.currentPlayerNr + 1;
             if (nextPlayerNr > players.length - 1) nextPlayerNr = 0;
             //TODO: tu jakaś blokada może, że jak kliknięcie w pełną kolumnę, to nie zmienia gracza
-
+ 
             return { ...state, currentPlayerNr: nextPlayerNr }
 
         default:

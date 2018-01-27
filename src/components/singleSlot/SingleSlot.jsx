@@ -21,13 +21,12 @@ class SingleSlot extends React.Component {
             bgColorStyle = {"backgroundColor": color };
             
         }
-        console.log("color:", bgColorStyle);
 
         return (
             <div className="singleSlot"
                 style={bgColorStyle}
                 onClick={() => this.handleClick()} >
-                {symbol}
+                {/* {symbol} */}
 
             </div>
         )

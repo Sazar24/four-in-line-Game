@@ -1,6 +1,6 @@
 export const gameParameters = {
     columnsAmount: 7,
-    rowsAmount:7
+    rowsAmount: 7
 }
 
 ////////////////////////
