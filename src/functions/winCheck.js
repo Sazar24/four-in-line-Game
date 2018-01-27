@@ -1,38 +1,73 @@
 import { determineWhichColumnIsIt } from "./gridCheck";
 // const determineColumnNr = require ("./gridCheck");
 
+
+
+
+export function findWinnerLine(addedSlotId, gameGrid, gridParams) {
+    let isItWinner;
+
+    let checkStep = 1; //horizonal line
+    isItWinner = checkLines(addedSlotId, gameGrid, gridParams, checkStep);
+    if (isItWinner) { return true; }
+    
+    checkStep = gridParams.columnsAmount; //horizonal line
+    // console.log("gridParams.columnsAmount:", checkStep);
+    isItWinner = checkLines(addedSlotId, gameGrid, gridParams, checkStep);
+    if (isItWinner) { return true; }
+
+    checkStep = gridParams.columnsAmount + 1; //diagonal line
+    isItWinner = checkLines(addedSlotId, gameGrid, gridParams, checkStep);
+    if (isItWinner) { return true; }
+
+    checkStep = gridParams.columnsAmount - 1; //diagonal line 2
+    isItWinner = checkLines(addedSlotId, gameGrid, gridParams, checkStep);
+    if (isItWinner) { return true; }
+
+}
+
 const winningLength = 4;
 
-export
-function findWinnerLine(addedSlotId, gameGrid) {   // slot wasn't Clicked! it was added at the bottom of the gameGrid
+function checkLines(addedSlotId, gameGrid, gridParams, checkStep) {   // slot wasn't Clicked! it was added at the bottom of the gameGrid
+
+
 
     const symbol = gameGrid[addedSlotId];
-
-    // ## variant: HORIZONTAL line  ##
-    let checkStep = 1;
-    let lineBuildToBeChecked = [];
+    let lineToCheck = [];
 
     for (let i = -(winningLength - 1); i < winningLength; i++) {
+
         let slotIDToCheck = addedSlotId + checkStep * i;
-        //TODO: tutaj dać sprawdzanie która to kolumna - dla checkSlotID
-        // if różnica tegoTutaj.kolumna od poprzedniogo >1 then clear Tablicę.
-
-
 
         if (slotIDToCheck >= gameGrid.length) continue;
         if (slotIDToCheck < 0) continue;
         let thisColumn;
 
         if (gameGrid[slotIDToCheck] === symbol) {
-            thisColumn = determineWhichColumnIsIt(slotIDToCheck, 7);
-            lineBuildToBeChecked.push({ id: slotIDToCheck, value: symbol, column: thisColumn });
+            thisColumn = determineWhichColumnIsIt(slotIDToCheck, gridParams);
+            lineToCheck.push({ id: slotIDToCheck, value: symbol, column: thisColumn });
         }
         else {
-            lineBuildToBeChecked = [];
+            lineToCheck = [];
         }
-        if (lineBuildToBeChecked.length === winningLength) {
-            //TODO: dispatch na podświetlenie (np border++, width--), żeby nie bawić się w rozróżnianie kolorków...;
 
+        if (lineToCheck.length > 1) {
+            const length = lineToCheck.length;
+            const thisSlot = lineToCheck[length - 1];
+            const slotBeforeThisSlot = lineToCheck[length - 2];
+
+            if (Math.abs(thisSlot.column - slotBeforeThisSlot.column) !==  1) {
+                lineToCheck = [];
+                continue;
+            }
+        }
+
+
+
+        if (lineToCheck.length === winningLength) {
+            //TODO: dispatch na podświetlenie (np border++, width--), żeby nie bawić się w rozróżnianie kolorków...;
+            console.log("winning Line is:", lineToCheck);
+            
             return true;
         }
     }
