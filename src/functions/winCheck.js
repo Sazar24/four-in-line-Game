@@ -10,8 +10,8 @@ export function findWinnerLine(addedSlotId, gameGrid, gridParams) {
     let checkStep = 1; //horizonal line
     isItWinner = checkLines(addedSlotId, gameGrid, gridParams, checkStep);
     if (isItWinner) { return true; }
-    
-    checkStep = gridParams.columnsAmount; //horizonal line
+
+    checkStep = gridParams.columnsAmount; //vertical line
     // console.log("gridParams.columnsAmount:", checkStep);
     isItWinner = checkLines(addedSlotId, gameGrid, gridParams, checkStep);
     if (isItWinner) { return true; }
@@ -56,7 +56,7 @@ function checkLines(addedSlotId, gameGrid, gridParams, checkStep) {   // slot wa
             const thisSlot = lineToCheck[length - 1];
             const slotBeforeThisSlot = lineToCheck[length - 2];
 
-            if (Math.abs(thisSlot.column - slotBeforeThisSlot.column) !==  1) {
+            if (Math.abs(thisSlot.column - slotBeforeThisSlot.column) > 1) {
                 lineToCheck = [];
                 continue;
             }
@@ -67,7 +67,7 @@ function checkLines(addedSlotId, gameGrid, gridParams, checkStep) {   // slot wa
         if (lineToCheck.length === winningLength) {
             //TODO: dispatch na podświetlenie (np border++, width--), żeby nie bawić się w rozróżnianie kolorków...;
             console.log("winning Line is:", lineToCheck);
-            
+
             return true;
         }
     }
