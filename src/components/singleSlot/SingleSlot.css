@@ -1,10 +1,16 @@
 .singleSlot {
     text-align: center;
     /* margin: 1px; */
-    border: 1px solid #777;
+    /* border: 1px solid #777;
+    border-color: black; */
     width: 40px;
     height: 40px;
+    /* border: none; */
     background-color: rgb(46, 8, 82);
     float: left;
     border-radius: 50%;   
+  }
+
+  .singleSlot:hover{
+    background-color: rgb(40 ,1, 33);
   }
