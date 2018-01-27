@@ -8,10 +8,10 @@ class Board extends React.Component {
     render() {
         const columnsAmount = this.props.gameParameters.columnsAmount;
         const currentPlayerColor = this.props.currentPlayer.color;
-
+        
         return (
             <div className="board">
-                -- Four in line --
+                {/* -- Four in line -- */}
                 <div style={{ 'margin': '10px 0 10px' }}>Now it`s turn of:
                      <div className="singleSlot"
                         style={{ 'backgroundColor': currentPlayerColor, 'float': 'right' }}>
