@@ -4,7 +4,9 @@
   margin: 10px;
   border: 1px solid #222;
   /* width: 300px; */
+  /* width: auto;  */
   width: fit-content; 
+  /* width: max-content; */
   height: fit-content;
   margin-left: auto;
   margin-right: auto;

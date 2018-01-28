@@ -1,6 +1,6 @@
 export const gameParameters = {
-    columnsAmount: 7,
-    rowsAmount: 7
+    columnsAmount: 17,
+    rowsAmount: 6
 }
 
 ////////////////////////
@@ -28,4 +28,4 @@ const player3 = {
     color: 'orange',
     name: "player 3"
 }
-export const players = [player1, player2];
+export const players = [player1, player2,player3];

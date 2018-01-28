@@ -2,7 +2,10 @@
     text-align: center;
     padding: 10px;
     border: 1px solid #222;
-    min-width: 300px;
+    /* min-width: 450px; */
+    /* grid-template-columns: auto; */
+    /* width: fit-content;  */
+    /* width: 280px; */
     padding-bottom: 45px;
      /* width: fit-content;  */
     /* height: fit-content; */

@@ -23,10 +23,10 @@ class SingleSlot extends React.Component {
         }
 
         return (
-            <div className="singleSlot"
+            <div className="singleSlot" 
                 style={bgColorStyle}
                 onClick={() => this.handleClick()} >
-                {this.props.index}
+                {/* {this.props.index} */}
                 {/* {symbol} */}
 
             </div>
