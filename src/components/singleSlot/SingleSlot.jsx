@@ -10,25 +10,22 @@ class SingleSlot extends React.Component {
         const slotID = this.props.index;
         columnClicked(slotID);
         changePlayer();
-
-
     }
+
     render() {
         const symbol = this.props.gridSlotValue;
         let bgColorStyle;
         if (symbol != null) {
             const color = determinePlayerColor(symbol, this.props.players)
-            bgColorStyle = {"backgroundColor": color };
-            
+            bgColorStyle = { "backgroundColor": color };
         }
 
         return (
-            <div className="singleSlot" 
+            <div className="singleSlot"
                 style={bgColorStyle}
                 onClick={() => this.handleClick()} >
                 {/* {this.props.index} */}
                 {/* {symbol} */}
-
             </div>
         )
     }

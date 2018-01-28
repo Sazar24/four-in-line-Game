@@ -8,13 +8,15 @@ const defaultState = {
     gameModel: gridArray,
     players: players,
     currentPlayerNr: 0,
-    message: undefined,
+    winMessage: undefined,
 }
 
 export const gridReducer = (state = defaultState, action) => {
 
     switch (action.type) {
         case "COLUMN_CLICKED":
+            if (state.winMessage !== undefined) return {...state}; 
+
             const columnClicked = determineWhichColumnIsIt(action.payload, state.gameConsts.gameParameters);
             const lowestEmptySlotID = findLowestEmptySlotIDinColumn(columnClicked, state.gameConsts.gameParameters, state.gameModel);
             const newGridArray = state.gameModel.slice();
@@ -27,7 +29,7 @@ export const gridReducer = (state = defaultState, action) => {
                 // console.log(players[state.currentPlayerNr].color, "has won!");
                 newMessage = `The ${players[state.currentPlayerNr].color} has won!`;
             }
-            return { ...state, gameModel: newGridArray, message: newMessage };
+            return { ...state, gameModel: newGridArray, winMessage: newMessage };
 
         case "CHANGE_PLAYER":
             let nextPlayerNr = state.currentPlayerNr + 1;

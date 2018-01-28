@@ -29,17 +29,14 @@ const winningLength = 4;
 
 function checkLines(addedSlotId, gameGrid, gridParams, checkStep) {   // slot wasn't Clicked! it was added at the bottom of the gameGrid
 
-
-
-    const symbol = gameGrid[addedSlotId];
+const symbol = gameGrid[addedSlotId];
     let lineToCheck = [];
 
     for (let i = -(winningLength - 1); i < winningLength; i++) {
 
         let slotIDToCheck = addedSlotId + checkStep * i;
 
-        if (slotIDToCheck >= gameGrid.length) continue;
-        if (slotIDToCheck < 0) continue;
+        if (slotIDToCheck >= gameGrid.length || slotIDToCheck < 0) continue;
         let thisColumn;
 
         if (gameGrid[slotIDToCheck] === symbol) {

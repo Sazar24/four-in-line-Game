@@ -6,11 +6,10 @@ import "../singleSlot/SingleSlot.css";
 
 class Board extends React.Component {
     render() {
-        const columnsAmount = this.props.gameParameters.columnsAmount;
         const currentPlayerColor = this.props.currentPlayer.color;
-
+        const columnsAmount = this.props.gameParameters.columnsAmount;
         const widthManually = { 'width': columnsAmount * 40 + 'px' };
-
+        
         let titleDiv;
         if (this.props.isItWinMessage !== undefined)
             titleDiv =
@@ -57,8 +56,7 @@ const mapStateToProps = (store) => (
         gameParameters: store.gridReducer.gameConsts.gameParameters,
         gridArray: store.gridReducer.gameModel,
         currentPlayer: store.gridReducer.players[store.gridReducer.currentPlayerNr],
-        isItWinMessage: store.gridReducer.message,
-
+        isItWinMessage: store.gridReducer.winMessage,
     });
 
 export default connect(mapStateToProps)(Board);
